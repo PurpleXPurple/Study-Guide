@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "LogicDeck",
+    "tagline": "Digital logic, one tap at a time.",
+    "version": "1.0.0"
+  },
+  "quiz": {
+    "questionsPerRound": 10,
+    "shuffleQuestions": true,
+    "shuffleOptions": true
+  },
+  "features": {
+    "stepsDrawer": true,
+    "persistProgress": true,
+    "keyboardShortcuts": true,
+    "haptics": true
+  },
+  "ui": {
+    "defaultCategory": "all",
+    "animationSpeed": "animate__faster"
+  },
+  "categories": [
+    { "id": "all",    "label": "Everything" },
+    { "id": "gates",  "label": "Logic Gates" },
+    { "id": "bool",   "label": "Boolean Algebra" },
+    { "id": "kmap",   "label": "K-Maps" },
+    { "id": "bin",    "label": "Binary" },
+    { "id": "signed", "label": "Signed Numbers" }
+  ]
+}

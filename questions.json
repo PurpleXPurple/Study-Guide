@@ -1,0 +1,1803 @@
+[
+  {
+    "id": "g001", "category": "gates", "topic": "AND gate",
+    "prompt": "For a 2-input AND gate, the output Y is 1 when…",
+    "options": [
+      { "id": "a", "text": "Both inputs are 1" },
+      { "id": "b", "text": "At least one input is 1" },
+      { "id": "c", "text": "Both inputs are 0" },
+      { "id": "d", "text": "The inputs differ" },
+      { "id": "e", "text": "The inputs are identical" }
+    ],
+    "correctId": "a",
+    "formula": "Y = A · B",
+    "steps": [
+      { "title": "Definition", "body": "AND is logical multiplication — <code>Y = A · B</code>. Picture a series circuit: current flows only when both switches are closed." },
+      { "title": "Truth table", "body": "<code>0·0=0</code>, <code>0·1=0</code>, <code>1·0=0</code>, <b><code>1·1=1</code></b>." },
+      { "title": "Conclusion", "body": "Only the row <code>A = 1, B = 1</code> produces <code>Y = 1</code>." }
+    ]
+  },
+  {
+    "id": "g002", "category": "gates", "topic": "OR gate",
+    "prompt": "A 2-input OR gate produces Y = 0 only when…",
+    "options": [
+      { "id": "a", "text": "A = 1 and B = 1" },
+      { "id": "b", "text": "A = 0 and B = 0" },
+      { "id": "c", "text": "A = 0 and B = 1" },
+      { "id": "d", "text": "A = 1 and B = 0" },
+      { "id": "e", "text": "A and B differ" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A + B",
+    "steps": [
+      { "title": "Definition", "body": "OR is logical addition — <code>Y = A + B</code>. Parallel switches: current flows if <em>any</em> path is closed." },
+      { "title": "Truth table", "body": "<b><code>0+0=0</code></b>, <code>0+1=1</code>, <code>1+0=1</code>, <code>1+1=1</code>." },
+      { "title": "Conclusion", "body": "Only the all-zeros row gives <code>Y = 0</code>." }
+    ]
+  },
+  {
+    "id": "g003", "category": "gates", "topic": "NAND gate",
+    "prompt": "A 2-input NAND gate has A = 1 and B = 1. What is Y?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "High-impedance" },
+      { "id": "e", "text": "Depends on the previous output" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A · B)'",
+    "steps": [
+      { "title": "Inner operation first", "body": "<code>A · B = 1 · 1 = 1</code>." },
+      { "title": "Apply inversion", "body": "NAND inverts AND: <code>Y = (1)' = 0</code>." },
+      { "title": "Check", "body": "NAND is 0 whenever both inputs are 1." }
+    ]
+  },
+  {
+    "id": "g004", "category": "gates", "topic": "NOR gate",
+    "prompt": "A 2-input NOR gate has A = 0 and B = 0. What is Y?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "Depends on the previous state" },
+      { "id": "e", "text": "High-impedance" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A + B)'",
+    "steps": [
+      { "title": "Inner operation", "body": "<code>A + B = 0 + 0 = 0</code>." },
+      { "title": "Invert", "body": "NOR inverts OR: <code>Y = (0)' = 1</code>." },
+      { "title": "Result", "body": "NOR outputs 1 only when both inputs are 0." }
+    ]
+  },
+  {
+    "id": "g005", "category": "gates", "topic": "XOR gate",
+    "prompt": "The output of a 2-input XOR gate is 1 when…",
+    "options": [
+      { "id": "a", "text": "Both inputs are 0" },
+      { "id": "b", "text": "Both inputs are 1" },
+      { "id": "c", "text": "The inputs differ" },
+      { "id": "d", "text": "At least one input is 1" },
+      { "id": "e", "text": "Neither input is 1" }
+    ],
+    "correctId": "c",
+    "formula": "Y = A ⊕ B",
+    "steps": [
+      { "title": "Definition", "body": "XOR (exclusive OR) outputs 1 only when the inputs are <em>not equal</em>." },
+      { "title": "Truth table", "body": "<code>0⊕0=0</code>, <b><code>0⊕1=1</code></b>, <b><code>1⊕0=1</code></b>, <code>1⊕1=0</code>." },
+      { "title": "Pattern", "body": "Rows <code>01</code> and <code>10</code> produce 1 — both are cases where inputs differ." }
+    ]
+  },
+  {
+    "id": "g006", "category": "gates", "topic": "XNOR gate",
+    "prompt": "A 2-input XNOR gate outputs 1 when…",
+    "options": [
+      { "id": "a", "text": "The inputs differ" },
+      { "id": "b", "text": "Both inputs are 1 only" },
+      { "id": "c", "text": "The inputs are identical" },
+      { "id": "d", "text": "Both inputs are 0 only" },
+      { "id": "e", "text": "Exactly one input is 1" }
+    ],
+    "correctId": "c",
+    "formula": "Y = (A ⊕ B)'",
+    "steps": [
+      { "title": "XNOR is inverted XOR", "body": "XNOR flips every row of the XOR truth table." },
+      { "title": "Truth table", "body": "<b><code>0⊕0→1</code></b>, <code>0⊕1→0</code>, <code>1⊕0→0</code>, <b><code>1⊕1→1</code></b>." },
+      { "title": "Conclusion", "body": "Output is 1 exactly when the inputs are equal — <code>00</code> or <code>11</code>." }
+    ]
+  },
+  {
+    "id": "g007", "category": "gates", "topic": "AND gate",
+    "prompt": "For a 2-input AND gate with A = 0 and B = 1, what is Y?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A · B",
+    "steps": [
+      { "title": "Substitute", "body": "<code>Y = 0 · 1</code>." },
+      { "title": "Evaluate", "body": "Any value ANDed with 0 is 0 (null law)." },
+      { "title": "Result", "body": "Y = <b>0</b>." }
+    ]
+  },
+  {
+    "id": "g008", "category": "gates", "topic": "OR gate",
+    "prompt": "For a 2-input OR gate with A = 1 and B = 0, what is Y?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A + B",
+    "steps": [
+      { "title": "Substitute", "body": "<code>Y = 1 + 0</code>." },
+      { "title": "Evaluate", "body": "Any value ORed with 1 is 1 (null law)." },
+      { "title": "Result", "body": "Y = <b>1</b>." }
+    ]
+  },
+  {
+    "id": "g009", "category": "gates", "topic": "NAND gate",
+    "prompt": "For a 2-input NAND gate with A = 0 and B = 1, what is Y?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A · B)'",
+    "steps": [
+      { "title": "Inner first", "body": "<code>A · B = 0 · 1 = 0</code>." },
+      { "title": "Invert", "body": "<code>Y = (0)' = 1</code>." },
+      { "title": "Result", "body": "NAND outputs 0 only when both inputs are 1." }
+    ]
+  },
+  {
+    "id": "g010", "category": "gates", "topic": "NOR gate",
+    "prompt": "For a 2-input NOR gate with A = 0 and B = 1, what is Y?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A + B)'",
+    "steps": [
+      { "title": "Inner first", "body": "<code>A + B = 0 + 1 = 1</code>." },
+      { "title": "Invert", "body": "<code>Y = (1)' = 0</code>." },
+      { "title": "Result", "body": "NOR outputs 1 only when all inputs are 0." }
+    ]
+  },
+  {
+    "id": "g011", "category": "gates", "topic": "XOR gate",
+    "prompt": "For a 2-input XOR gate with A = 1 and B = 1, what is Y?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A·B" },
+      { "id": "e", "text": "A+B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A ⊕ B",
+    "steps": [
+      { "title": "Rule", "body": "XOR outputs 1 only when inputs differ." },
+      { "title": "Check inputs", "body": "A = B = 1 → inputs are equal." },
+      { "title": "Result", "body": "Y = <b>0</b>." }
+    ]
+  },
+  {
+    "id": "g012", "category": "gates", "topic": "XNOR gate",
+    "prompt": "For a 2-input XNOR gate with A = 0 and B = 1, what is Y?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A ⊕ B" },
+      { "id": "e", "text": "A + B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A ⊕ B)'",
+    "steps": [
+      { "title": "Compute XOR first", "body": "<code>A ⊕ B = 0 ⊕ 1 = 1</code>." },
+      { "title": "Invert", "body": "<code>Y = (1)' = 0</code>." },
+      { "title": "Result", "body": "XNOR outputs 1 only when inputs are equal." }
+    ]
+  },
+  {
+    "id": "g013", "category": "gates", "topic": "NOT gate",
+    "prompt": "A NOT gate with input A = 1 produces Y = ?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "Depends on the previous output" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A'",
+    "steps": [
+      { "title": "Definition", "body": "NOT (inverter) flips its input: <code>Y = A'</code>." },
+      { "title": "Substitute", "body": "<code>A = 1</code> → <code>Y = 1'</code>." },
+      { "title": "Result", "body": "Y = <b>0</b>." }
+    ]
+  },
+  {
+    "id": "g014", "category": "gates", "topic": "NOT gate",
+    "prompt": "A NOT gate with input A = 0 produces Y = ?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "Depends on the previous output" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A'",
+    "steps": [
+      { "title": "Definition", "body": "NOT inverts its input: <code>Y = A'</code>." },
+      { "title": "Substitute", "body": "<code>A = 0</code> → <code>Y = 0'</code>." },
+      { "title": "Result", "body": "Y = <b>1</b>." }
+    ]
+  },
+  {
+    "id": "g015", "category": "gates", "topic": "De Morgan",
+    "prompt": "By De Morgan's law, (A + B)' simplifies to…",
+    "options": [
+      { "id": "a", "text": "A' + B'" },
+      { "id": "b", "text": "A · B" },
+      { "id": "c", "text": "A' · B'" },
+      { "id": "d", "text": "A + B" },
+      { "id": "e", "text": "A' + B" }
+    ],
+    "correctId": "c",
+    "formula": "(A + B)' = A' · B'",
+    "steps": [
+      { "title": "State the law", "body": "The complement of a sum equals the product of the complements." },
+      { "title": "Check row 00", "body": "LHS: <code>(0+0)' = 1</code>. RHS: <code>1 · 1 = 1</code>. Match." },
+      { "title": "Check row 11", "body": "LHS: <code>(1+1)' = 0</code>. RHS: <code>0 · 0 = 0</code>. Match." }
+    ]
+  },
+  {
+    "id": "g016", "category": "gates", "topic": "De Morgan",
+    "prompt": "By De Morgan's law, (A · B)' simplifies to…",
+    "options": [
+      { "id": "a", "text": "A' · B'" },
+      { "id": "b", "text": "A' + B'" },
+      { "id": "c", "text": "A + B" },
+      { "id": "d", "text": "A · B" },
+      { "id": "e", "text": "(A + B)'" }
+    ],
+    "correctId": "b",
+    "formula": "(A · B)' = A' + B'",
+    "steps": [
+      { "title": "State the law", "body": "The complement of a product equals the sum of the complements." },
+      { "title": "Check row 11", "body": "LHS: <code>(1·1)' = 0</code>. RHS: <code>0 + 0 = 0</code>. Match." },
+      { "title": "Result", "body": "<code>(A · B)' = A' + B'</code>." }
+    ]
+  },
+  {
+    "id": "g017", "category": "gates", "topic": "3-input AND",
+    "prompt": "A 3-input AND gate outputs 1 when…",
+    "options": [
+      { "id": "a", "text": "Any one input is 1" },
+      { "id": "b", "text": "All three inputs are 1" },
+      { "id": "c", "text": "At least two inputs are 1" },
+      { "id": "d", "text": "Exactly one input is 1" },
+      { "id": "e", "text": "All three inputs are 0" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A · B · C",
+    "steps": [
+      { "title": "Definition", "body": "AND requires every input to be 1 — a chain of series switches." },
+      { "title": "Truth table", "body": "Only the row <code>111</code> yields <code>Y = 1</code>." },
+      { "title": "Result", "body": "All three inputs must be 1." }
+    ]
+  },
+  {
+    "id": "g018", "category": "gates", "topic": "3-input OR",
+    "prompt": "A 3-input OR gate outputs 0 when…",
+    "options": [
+      { "id": "a", "text": "Any input is 0" },
+      { "id": "b", "text": "All three inputs are 0" },
+      { "id": "c", "text": "At least two inputs are 0" },
+      { "id": "d", "text": "Exactly one input is 0" },
+      { "id": "e", "text": "All three inputs are 1" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A + B + C",
+    "steps": [
+      { "title": "Definition", "body": "OR outputs 1 if <em>any</em> input is 1." },
+      { "title": "Invert the rule", "body": "So output is 0 only when <em>no</em> input is 1." },
+      { "title": "Result", "body": "Only the row <code>000</code> yields <code>Y = 0</code>." }
+    ]
+  },
+  {
+    "id": "g019", "category": "gates", "topic": "3-input NAND",
+    "prompt": "For a 3-input NAND gate with A=1, B=1, C=1, what is Y?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "Depends on gate order" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A · B · C)'",
+    "steps": [
+      { "title": "Inner first", "body": "<code>A · B · C = 1 · 1 · 1 = 1</code>." },
+      { "title": "Invert", "body": "<code>Y = (1)' = 0</code>." },
+      { "title": "Result", "body": "NAND is 0 exactly when all inputs are 1." }
+    ]
+  },
+  {
+    "id": "g020", "category": "gates", "topic": "3-input NOR",
+    "prompt": "For a 3-input NOR gate with A=0, B=0, C=0, what is Y?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A+B" },
+      { "id": "e", "text": "High-impedance" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A + B + C)'",
+    "steps": [
+      { "title": "Inner first", "body": "<code>A + B + C = 0 + 0 + 0 = 0</code>." },
+      { "title": "Invert", "body": "<code>Y = (0)' = 1</code>." },
+      { "title": "Result", "body": "NOR outputs 1 only when all inputs are 0." }
+    ]
+  },
+  {
+    "id": "g021", "category": "gates", "topic": "Expression to gate",
+    "prompt": "Which gate computes Y = A · B?",
+    "options": [
+      { "id": "a", "text": "OR" },
+      { "id": "b", "text": "AND" },
+      { "id": "c", "text": "NAND" },
+      { "id": "d", "text": "NOR" },
+      { "id": "e", "text": "XOR" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A · B",
+    "steps": [
+      { "title": "Read the operator", "body": "The dot <code>·</code> is logical multiplication." },
+      { "title": "Match", "body": "Multiplication of inputs is the AND operation." },
+      { "title": "Answer", "body": "AND gate." }
+    ]
+  },
+  {
+    "id": "g022", "category": "gates", "topic": "Expression to gate",
+    "prompt": "Which gate computes Y = (A + B)'?",
+    "options": [
+      { "id": "a", "text": "OR" },
+      { "id": "b", "text": "AND" },
+      { "id": "c", "text": "NOR" },
+      { "id": "d", "text": "NAND" },
+      { "id": "e", "text": "XNOR" }
+    ],
+    "correctId": "c",
+    "formula": "Y = (A + B)'",
+    "steps": [
+      { "title": "Identify inner op", "body": "The sum <code>A + B</code> is an OR." },
+      { "title": "Apply complement", "body": "Inverting an OR gives NOR." },
+      { "title": "Answer", "body": "NOR gate." }
+    ]
+  },
+  {
+    "id": "g023", "category": "gates", "topic": "Complementary gates",
+    "prompt": "The complement of an AND gate is which gate?",
+    "options": [
+      { "id": "a", "text": "OR" },
+      { "id": "b", "text": "NOR" },
+      { "id": "c", "text": "NAND" },
+      { "id": "d", "text": "XOR" },
+      { "id": "e", "text": "XNOR" }
+    ],
+    "correctId": "c",
+    "formula": "(A · B)' = NAND",
+    "steps": [
+      { "title": "Definition", "body": "Complementing a gate inverts its output." },
+      { "title": "Apply", "body": "<code>(AND output)' = (A · B)'</code>." },
+      { "title": "Answer", "body": "That expression is the NAND gate." }
+    ]
+  },
+  {
+    "id": "g024", "category": "gates", "topic": "Complementary gates",
+    "prompt": "The complement of an OR gate is which gate?",
+    "options": [
+      { "id": "a", "text": "AND" },
+      { "id": "b", "text": "NAND" },
+      { "id": "c", "text": "NOR" },
+      { "id": "d", "text": "XOR" },
+      { "id": "e", "text": "XNOR" }
+    ],
+    "correctId": "c",
+    "formula": "(A + B)' = NOR",
+    "steps": [
+      { "title": "Definition", "body": "Complementing a gate inverts its output." },
+      { "title": "Apply", "body": "<code>(OR output)' = (A + B)'</code>." },
+      { "title": "Answer", "body": "That expression is the NOR gate." }
+    ]
+  },
+  {
+    "id": "g025", "category": "gates", "topic": "NAND universality",
+    "prompt": "Why is NAND called a universal gate?",
+    "options": [
+      { "id": "a", "text": "It is the fastest gate" },
+      { "id": "b", "text": "Any Boolean function can be built using only NAND gates" },
+      { "id": "c", "text": "It has the lowest power consumption" },
+      { "id": "d", "text": "It works at any voltage" },
+      { "id": "e", "text": "It has a single input" }
+    ],
+    "correctId": "b",
+    "formula": "NAND is functionally complete",
+    "steps": [
+      { "title": "Universality", "body": "A gate is universal if AND, OR, and NOT can all be built from it." },
+      { "title": "NAND build", "body": "Tie inputs for NOT; NAND-then-NOT for AND; NOT-both-then-NAND for OR." },
+      { "title": "Answer", "body": "NAND can implement every Boolean function alone." }
+    ]
+  },
+  {
+    "id": "g026", "category": "gates", "topic": "Multi-gate circuit",
+    "prompt": "Given A=1, B=1, C=0, evaluate Y = (A · B) + C.",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "Depends on gate order" },
+      { "id": "e", "text": "C" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A · B) + C",
+    "steps": [
+      { "title": "Inner AND", "body": "<code>A · B = 1 · 1 = 1</code>." },
+      { "title": "Outer OR", "body": "<code>1 + C = 1 + 0 = 1</code>." },
+      { "title": "Result", "body": "Y = <b>1</b>." }
+    ]
+  },
+  {
+    "id": "g027", "category": "gates", "topic": "Multi-gate circuit",
+    "prompt": "Given A=1, B=0, C=0, evaluate Y = (A + B) · C.",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "B" }
+    ],
+    "correctId": "b",
+    "formula": "Y = (A + B) · C",
+    "steps": [
+      { "title": "Inner OR", "body": "<code>A + B = 1 + 0 = 1</code>." },
+      { "title": "Outer AND", "body": "<code>1 · C = 1 · 0 = 0</code>." },
+      { "title": "Result", "body": "Y = <b>0</b>." }
+    ]
+  },
+  {
+    "id": "g028", "category": "gates", "topic": "Multi-gate circuit",
+    "prompt": "Given A=0, B=1, C=1, evaluate Y = A ⊕ (B · C).",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "Undefined" },
+      { "id": "d", "text": "A·B" },
+      { "id": "e", "text": "B + C" }
+    ],
+    "correctId": "b",
+    "formula": "Y = A ⊕ (B · C)",
+    "steps": [
+      { "title": "Inner AND", "body": "<code>B · C = 1 · 1 = 1</code>." },
+      { "title": "Outer XOR", "body": "<code>A ⊕ 1 = 0 ⊕ 1 = 1</code>." },
+      { "title": "Result", "body": "Y = <b>1</b>." }
+    ]
+  },
+  {
+    "id": "b001", "category": "bool", "topic": "Absorption law",
+    "prompt": "Simplify: A + A·B",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "B" },
+      { "id": "c", "text": "A·B" },
+      { "id": "d", "text": "A + B" },
+      { "id": "e", "text": "A'·B" }
+    ],
+    "correctId": "a",
+    "formula": "A + A·B = A",
+    "steps": [
+      { "title": "Factor A", "body": "<code>A + A·B = A·(1 + B)</code>." },
+      { "title": "Null law", "body": "<code>1 + B = 1</code>, so we get <code>A · 1</code>." },
+      { "title": "Identity", "body": "<code>A · 1 = A</code>. This is the absorption law." }
+    ]
+  },
+  {
+    "id": "b002", "category": "bool", "topic": "Combine law",
+    "prompt": "Simplify: A·B + A·B'",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "B" },
+      { "id": "c", "text": "A·B" },
+      { "id": "d", "text": "A·B'" },
+      { "id": "e", "text": "A ⊕ B" }
+    ],
+    "correctId": "a",
+    "formula": "A·B + A·B' = A",
+    "steps": [
+      { "title": "Factor A", "body": "<code>A·B + A·B' = A·(B + B')</code>." },
+      { "title": "Complement", "body": "<code>B + B' = 1</code>." },
+      { "title": "Identity", "body": "<code>A · 1 = A</code>. This is the combine law." }
+    ]
+  },
+  {
+    "id": "b003", "category": "bool", "topic": "Idempotent law",
+    "prompt": "Simplify: A + A",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "2A" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "1" },
+      { "id": "e", "text": "A'" }
+    ],
+    "correctId": "a",
+    "formula": "A + A = A",
+    "steps": [
+      { "title": "Idempotent law", "body": "A variable ORed with itself equals itself." },
+      { "title": "Apply", "body": "<code>A + A = A</code>." },
+      { "title": "Dual", "body": "<code>A · A = A</code> as well." }
+    ]
+  },
+  {
+    "id": "b004", "category": "bool", "topic": "Idempotent law",
+    "prompt": "Simplify: A · A",
+    "options": [
+      { "id": "a", "text": "A²" },
+      { "id": "b", "text": "A" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "1" },
+      { "id": "e", "text": "A'" }
+    ],
+    "correctId": "b",
+    "formula": "A · A = A",
+    "steps": [
+      { "title": "Idempotent law", "body": "A variable ANDed with itself equals itself." },
+      { "title": "Apply", "body": "<code>A · A = A</code>." },
+      { "title": "Dual", "body": "<code>A + A = A</code> as well." }
+    ]
+  },
+  {
+    "id": "b005", "category": "bool", "topic": "Null law",
+    "prompt": "Simplify: A + 1",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "2" }
+    ],
+    "correctId": "b",
+    "formula": "A + 1 = 1",
+    "steps": [
+      { "title": "Null law", "body": "ORing anything with 1 forces the result to 1." },
+      { "title": "Apply", "body": "<code>A + 1 = 1</code>." },
+      { "title": "Dual", "body": "<code>A · 0 = 0</code>." }
+    ]
+  },
+  {
+    "id": "b006", "category": "bool", "topic": "Null law",
+    "prompt": "Simplify: A · 0",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "Undefined" }
+    ],
+    "correctId": "c",
+    "formula": "A · 0 = 0",
+    "steps": [
+      { "title": "Null law", "body": "ANDing anything with 0 forces the result to 0." },
+      { "title": "Apply", "body": "<code>A · 0 = 0</code>." },
+      { "title": "Dual", "body": "<code>A + 1 = 1</code>." }
+    ]
+  },
+  {
+    "id": "b007", "category": "bool", "topic": "Identity law",
+    "prompt": "Simplify: A + 0",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "A" },
+      { "id": "c", "text": "1" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "2A" }
+    ],
+    "correctId": "b",
+    "formula": "A + 0 = A",
+    "steps": [
+      { "title": "Identity law", "body": "ORing with 0 does not change the variable." },
+      { "title": "Apply", "body": "<code>A + 0 = A</code>." },
+      { "title": "Dual", "body": "<code>A · 1 = A</code>." }
+    ]
+  },
+  {
+    "id": "b008", "category": "bool", "topic": "Identity law",
+    "prompt": "Simplify: A · 1",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "A" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "A + 1" }
+    ],
+    "correctId": "c",
+    "formula": "A · 1 = A",
+    "steps": [
+      { "title": "Identity law", "body": "ANDing with 1 does not change the variable." },
+      { "title": "Apply", "body": "<code>A · 1 = A</code>." },
+      { "title": "Dual", "body": "<code>A + 0 = A</code>." }
+    ]
+  },
+  {
+    "id": "b009", "category": "bool", "topic": "Complement law",
+    "prompt": "Simplify: A + A'",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "A" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "2A" }
+    ],
+    "correctId": "b",
+    "formula": "A + A' = 1",
+    "steps": [
+      { "title": "Complement law", "body": "A variable ORed with its complement always yields 1." },
+      { "title": "Reason", "body": "One of the two values is always 1." },
+      { "title": "Dual", "body": "<code>A · A' = 0</code>." }
+    ]
+  },
+  {
+    "id": "b010", "category": "bool", "topic": "Complement law",
+    "prompt": "Simplify: A · A'",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "A" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "A + A'" }
+    ],
+    "correctId": "a",
+    "formula": "A · A' = 0",
+    "steps": [
+      { "title": "Complement law", "body": "A variable ANDed with its complement always yields 0." },
+      { "title": "Reason", "body": "One of the two values is always 0." },
+      { "title": "Dual", "body": "<code>A + A' = 1</code>." }
+    ]
+  },
+  {
+    "id": "b011", "category": "bool", "topic": "Double NOT",
+    "prompt": "Simplify: (A')'",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "A'" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "1" },
+      { "id": "e", "text": "A·A" }
+    ],
+    "correctId": "a",
+    "formula": "(A')' = A",
+    "steps": [
+      { "title": "Double negation", "body": "Inverting twice cancels out." },
+      { "title": "Apply", "body": "<code>(A')' = A</code>." },
+      { "title": "Result", "body": "A." }
+    ]
+  },
+  {
+    "id": "b012", "category": "bool", "topic": "Distributive law",
+    "prompt": "Expand: A(B + C)",
+    "options": [
+      { "id": "a", "text": "AB + AC" },
+      { "id": "b", "text": "AB + C" },
+      { "id": "c", "text": "A + BC" },
+      { "id": "d", "text": "ABC" },
+      { "id": "e", "text": "A + B + C" }
+    ],
+    "correctId": "a",
+    "formula": "A(B + C) = AB + AC",
+    "steps": [
+      { "title": "Distribute", "body": "Multiply A into each term inside the parentheses." },
+      { "title": "Apply", "body": "<code>A(B + C) = AB + AC</code>." },
+      { "title": "Result", "body": "AB + AC." }
+    ]
+  },
+  {
+    "id": "b013", "category": "bool", "topic": "Consensus theorem",
+    "prompt": "Simplify: (A + B)(A + C)",
+    "options": [
+      { "id": "a", "text": "A + BC" },
+      { "id": "b", "text": "A·B·C" },
+      { "id": "c", "text": "A + B + C" },
+      { "id": "d", "text": "AB + AC" },
+      { "id": "e", "text": "A" }
+    ],
+    "correctId": "a",
+    "formula": "(A + B)(A + C) = A + BC",
+    "steps": [
+      { "title": "Expand", "body": "Multiply out: <code>AA + AC + AB + BC</code>." },
+      { "title": "Simplify", "body": "<code>AA = A</code>, so <code>A + AC + AB + BC</code>." },
+      { "title": "Absorb", "body": "<code>A + AB + AC = A</code>, leaving <code>A + BC</code>." }
+    ]
+  },
+  {
+    "id": "b014", "category": "bool", "topic": "Absorption variant",
+    "prompt": "Simplify: A + A'·B",
+    "options": [
+      { "id": "a", "text": "A + B" },
+      { "id": "b", "text": "A·B" },
+      { "id": "c", "text": "A' + B" },
+      { "id": "d", "text": "A + A'" },
+      { "id": "e", "text": "AB + A'B" }
+    ],
+    "correctId": "a",
+    "formula": "A + A'·B = A + B",
+    "steps": [
+      { "title": "Recognize form", "body": "This matches the law <code>X + X'Y = X + Y</code>." },
+      { "title": "Apply", "body": "<code>A + A'·B = A + B</code>." },
+      { "title": "Verify", "body": "Truth tables match for all A, B." }
+    ]
+  },
+  {
+    "id": "b015", "category": "bool", "topic": "Absorption variant",
+    "prompt": "Simplify: A(A' + B)",
+    "options": [
+      { "id": "a", "text": "A·B" },
+      { "id": "b", "text": "A + B" },
+      { "id": "c", "text": "A" },
+      { "id": "d", "text": "B" },
+      { "id": "e", "text": "A·A'" }
+    ],
+    "correctId": "a",
+    "formula": "A(A' + B) = A·B",
+    "steps": [
+      { "title": "Distribute", "body": "<code>A·A' + A·B</code>." },
+      { "title": "Complement", "body": "<code>A·A' = 0</code>." },
+      { "title": "Identity", "body": "<code>0 + A·B = A·B</code>." }
+    ]
+  },
+  {
+    "id": "b016", "category": "bool", "topic": "Consensus dual",
+    "prompt": "Simplify by consensus: AB + BC + A'C",
+    "options": [
+      { "id": "a", "text": "AB + A'C" },
+      { "id": "b", "text": "AB + BC" },
+      { "id": "c", "text": "BC + A'C" },
+      { "id": "d", "text": "A + B + C" },
+      { "id": "e", "text": "ABC" }
+    ],
+    "correctId": "a",
+    "formula": "XY + YZ + X'Z = XY + X'Z",
+    "steps": [
+      { "title": "Identify consensus", "body": "The term <code>BC</code> is a consensus of <code>AB</code> and <code>A'C</code>." },
+      { "title": "Drop it", "body": "Consensus terms are redundant." },
+      { "title": "Result", "body": "<code>AB + A'C</code>." }
+    ]
+  },
+  {
+    "id": "b017", "category": "bool", "topic": "XOR identity",
+    "prompt": "Simplify: A ⊕ A",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "A" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "2A" }
+    ],
+    "correctId": "a",
+    "formula": "A ⊕ A = 0",
+    "steps": [
+      { "title": "Rule", "body": "XOR of identical operands is always 0." },
+      { "title": "Apply", "body": "<code>A ⊕ A = 0</code>." },
+      { "title": "Reason", "body": "Inputs are never different." }
+    ]
+  },
+  {
+    "id": "b018", "category": "bool", "topic": "XOR identity",
+    "prompt": "Simplify: A ⊕ 0",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "1" },
+      { "id": "d", "text": "A'" },
+      { "id": "e", "text": "A + 0" }
+    ],
+    "correctId": "a",
+    "formula": "A ⊕ 0 = A",
+    "steps": [
+      { "title": "Rule", "body": "XOR with 0 leaves the value unchanged." },
+      { "title": "Apply", "body": "<code>A ⊕ 0 = A</code>." },
+      { "title": "Check", "body": "0 ⊕ 0 = 0, 1 ⊕ 0 = 1." }
+    ]
+  },
+  {
+    "id": "b019", "category": "bool", "topic": "XOR identity",
+    "prompt": "Simplify: A ⊕ 1",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "A'" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "1" },
+      { "id": "e", "text": "A + 1" }
+    ],
+    "correctId": "b",
+    "formula": "A ⊕ 1 = A'",
+    "steps": [
+      { "title": "Rule", "body": "XOR with 1 inverts the value." },
+      { "title": "Apply", "body": "<code>A ⊕ 1 = A'</code>." },
+      { "title": "Check", "body": "0 ⊕ 1 = 1, 1 ⊕ 1 = 0." }
+    ]
+  },
+  {
+    "id": "b020", "category": "bool", "topic": "Consensus",
+    "prompt": "Simplify: AB + AC + BC",
+    "options": [
+      { "id": "a", "text": "AB + AC" },
+      { "id": "b", "text": "A + BC" },
+      { "id": "c", "text": "A(B + C)" },
+      { "id": "d", "text": "ABC" },
+      { "id": "e", "text": "A + B + C" }
+    ],
+    "correctId": "a",
+    "formula": "AB + AC + BC = AB + AC",
+    "steps": [
+      { "title": "Consensus term", "body": "<code>BC</code> is a consensus of <code>AB</code> and <code>AC</code>." },
+      { "title": "Drop it", "body": "Consensus terms are redundant." },
+      { "title": "Result", "body": "<code>AB + AC</code>." }
+    ]
+  },
+  {
+    "id": "b021", "category": "bool", "topic": "Combine variant",
+    "prompt": "Simplify: (A + B)(A + B')",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "B" },
+      { "id": "c", "text": "A + B" },
+      { "id": "d", "text": "A·B" },
+      { "id": "e", "text": "1" }
+    ],
+    "correctId": "a",
+    "formula": "(A + B)(A + B') = A",
+    "steps": [
+      { "title": "Expand", "body": "<code>AA + AB' + AB + BB'</code>." },
+      { "title": "Simplify", "body": "<code>AA = A</code> and <code>BB' = 0</code>, so <code>A + AB' + AB</code>." },
+      { "title": "Absorb", "body": "<code>A + AB = A</code>, so result is <code>A</code>." }
+    ]
+  },
+  {
+    "id": "b022", "category": "bool", "topic": "Multi-literal absorption",
+    "prompt": "Simplify: A + A'B + A'C",
+    "options": [
+      { "id": "a", "text": "A + B + C" },
+      { "id": "b", "text": "A + BC" },
+      { "id": "c", "text": "A·B·C" },
+      { "id": "d", "text": "A" },
+      { "id": "e", "text": "A + A'" }
+    ],
+    "correctId": "a",
+    "formula": "A + A'X = A + X  (apply twice)",
+    "steps": [
+      { "title": "Absorb first", "body": "<code>A + A'B = A + B</code>." },
+      { "title": "Absorb second", "body": "Then <code>(A + B) + A'C = A + B + C</code>." },
+      { "title": "Result", "body": "<code>A + B + C</code>." }
+    ]
+  },
+  {
+    "id": "k001", "category": "kmap", "topic": "Group size",
+    "prompt": "In a K-map, a group of 2 adjacent 1s eliminates how many variables?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "2" },
+      { "id": "d", "text": "3" },
+      { "id": "e", "text": "4" }
+    ],
+    "correctId": "b",
+    "formula": "group of 2ⁿ cells removes n variables",
+    "steps": [
+      { "title": "Rule", "body": "A group of <code>2ⁿ</code> cells removes <code>n</code> variables." },
+      { "title": "Apply", "body": "<code>2 = 2¹</code>, so <code>n = 1</code>." },
+      { "title": "Reason", "body": "Within the pair, one variable changes and cancels out." }
+    ]
+  },
+  {
+    "id": "k002", "category": "kmap", "topic": "Group size",
+    "prompt": "In a K-map, a group of 4 adjacent 1s eliminates how many variables?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "3" },
+      { "id": "d", "text": "4" },
+      { "id": "e", "text": "0" }
+    ],
+    "correctId": "b",
+    "formula": "group of 2ⁿ cells removes n variables",
+    "steps": [
+      { "title": "Rule", "body": "A group of <code>2ⁿ</code> cells removes <code>n</code> variables." },
+      { "title": "Apply", "body": "<code>4 = 2²</code>, so <code>n = 2</code>." },
+      { "title": "Reason", "body": "Two variables change within the group and cancel out." }
+    ]
+  },
+  {
+    "id": "k003", "category": "kmap", "topic": "Group size",
+    "prompt": "In a K-map, a group of 8 adjacent 1s eliminates how many variables?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "3" },
+      { "id": "d", "text": "4" },
+      { "id": "e", "text": "8" }
+    ],
+    "correctId": "c",
+    "formula": "group of 2ⁿ cells removes n variables",
+    "steps": [
+      { "title": "Rule", "body": "A group of <code>2ⁿ</code> cells removes <code>n</code> variables." },
+      { "title": "Apply", "body": "<code>8 = 2³</code>, so <code>n = 3</code>." },
+      { "title": "Result", "body": "Removes 3 variables." }
+    ]
+  },
+  {
+    "id": "k004", "category": "kmap", "topic": "Valid groups",
+    "prompt": "Which of these is a valid K-map group size?",
+    "options": [
+      { "id": "a", "text": "3" },
+      { "id": "b", "text": "6" },
+      { "id": "c", "text": "4" },
+      { "id": "d", "text": "12" },
+      { "id": "e", "text": "7" }
+    ],
+    "correctId": "c",
+    "formula": "Groups must be a power of two",
+    "steps": [
+      { "title": "Rule", "body": "Valid group sizes are 1, 2, 4, 8, 16." },
+      { "title": "Check options", "body": "3, 6, 7, 12 are not powers of two." },
+      { "title": "Result", "body": "4 is valid." }
+    ]
+  },
+  {
+    "id": "k005", "category": "kmap", "topic": "Wrap-around",
+    "prompt": "In a 4-variable K-map, the four corners…",
+    "options": [
+      { "id": "a", "text": "Are independent — no grouping allowed" },
+      { "id": "b", "text": "Form a valid 4-cell group" },
+      { "id": "c", "text": "Can only be grouped in pairs" },
+      { "id": "d", "text": "Must be grouped with their direct neighbors" },
+      { "id": "e", "text": "Are only adjacent if they contain 1s" }
+    ],
+    "correctId": "b",
+    "formula": "edges wrap; corners are adjacent",
+    "steps": [
+      { "title": "Gray code", "body": "Axes run <code>00, 01, 11, 10</code>. Adjacent cells differ by one bit." },
+      { "title": "Wrap rule", "body": "Top and bottom edges are adjacent; left and right edges are adjacent." },
+      { "title": "Result", "body": "All four corners are mutually adjacent and form a valid 4-cell group." }
+    ]
+  },
+  {
+    "id": "k006", "category": "kmap", "topic": "Gray code",
+    "prompt": "In K-map Gray code order, which column follows 01?",
+    "options": [
+      { "id": "a", "text": "00" },
+      { "id": "b", "text": "10" },
+      { "id": "c", "text": "11" },
+      { "id": "d", "text": "01" },
+      { "id": "e", "text": "110" }
+    ],
+    "correctId": "c",
+    "formula": "00 → 01 → 11 → 10",
+    "steps": [
+      { "title": "Gray code order", "body": "The standard K-map column order is <code>00, 01, 11, 10</code>." },
+      { "title": "Find 01", "body": "The next column after <code>01</code> is <code>11</code>." },
+      { "title": "Reason", "body": "Only one bit changes between adjacent columns." }
+    ]
+  },
+  {
+    "id": "k007", "category": "kmap", "topic": "Gray code",
+    "prompt": "In K-map Gray code order, which column follows 11?",
+    "options": [
+      { "id": "a", "text": "00" },
+      { "id": "b", "text": "01" },
+      { "id": "c", "text": "10" },
+      { "id": "d", "text": "11" },
+      { "id": "e", "text": "111" }
+    ],
+    "correctId": "c",
+    "formula": "00 → 01 → 11 → 10",
+    "steps": [
+      { "title": "Sequence", "body": "Gray code order is <code>00, 01, 11, 10</code>." },
+      { "title": "Next after 11", "body": "Followed by <code>10</code>." },
+      { "title": "Reason", "body": "Only the leftmost bit changes." }
+    ]
+  },
+  {
+    "id": "k008", "category": "kmap", "topic": "SOP form",
+    "prompt": "What does SOP stand for?",
+    "options": [
+      { "id": "a", "text": "Standard Order Product" },
+      { "id": "b", "text": "Sum of Products" },
+      { "id": "c", "text": "System Output Protocol" },
+      { "id": "d", "text": "Simple OR Product" },
+      { "id": "e", "text": "Symmetric Output Pair" }
+    ],
+    "correctId": "b",
+    "formula": "SOP = OR of AND terms",
+    "steps": [
+      { "title": "Expand", "body": "SOP = <b>S</b>um <b>o</b>f <b>P</b>roducts." },
+      { "title": "Meaning", "body": "Product terms (ANDs) are joined together by ORs." },
+      { "title": "Example", "body": "<code>AB + A'C + BC</code> is a SOP expression." }
+    ]
+  },
+  {
+    "id": "k009", "category": "kmap", "topic": "Grouping strategy",
+    "prompt": "When grouping 1s in a K-map, what is the recommended order?",
+    "options": [
+      { "id": "a", "text": "Smallest groups first, then merge" },
+      { "id": "b", "text": "Largest groups first" },
+      { "id": "c", "text": "Random order" },
+      { "id": "d", "text": "Groups must be size 2 only" },
+      { "id": "e", "text": "Only group corners" }
+    ],
+    "correctId": "b",
+    "formula": "Largest group = maximum elimination",
+    "steps": [
+      { "title": "Rule", "body": "Use the biggest groups first — they eliminate the most variables." },
+      { "title": "Reason", "body": "Smaller groups can always be split from larger ones, but not vice versa." },
+      { "title": "Result", "body": "Largest first." }
+    ]
+  },
+  {
+    "id": "k010", "category": "kmap", "topic": "K-map purpose",
+    "prompt": "The main purpose of a K-map is to…",
+    "options": [
+      { "id": "a", "text": "Convert binary to decimal" },
+      { "id": "b", "text": "Minimize a Boolean expression visually" },
+      { "id": "c", "text": "Design flip-flops" },
+      { "id": "d", "text": "Test a gate" },
+      { "id": "e", "text": "Calculate clock frequency" }
+    ],
+    "correctId": "b",
+    "formula": "K-map → minimal SOP or POS",
+    "steps": [
+      { "title": "Purpose", "body": "A K-map places truth-table rows in Gray-code order so adjacency reveals simplifications." },
+      { "title": "Method", "body": "Group adjacent 1s to eliminate changing variables." },
+      { "title": "Result", "body": "Produces a minimal expression." }
+    ]
+  },
+  {
+    "id": "k011", "category": "kmap", "topic": "Wrap-around",
+    "prompt": "Can left and right edges of a K-map be grouped across?",
+    "options": [
+      { "id": "a", "text": "No, they are independent" },
+      { "id": "b", "text": "Yes, edges wrap" },
+      { "id": "c", "text": "Only if both cells are 0" },
+      { "id": "d", "text": "Only in 3-variable maps" },
+      { "id": "e", "text": "Only with a special tool" }
+    ],
+    "correctId": "b",
+    "formula": "K-map edges wrap",
+    "steps": [
+      { "title": "Gray code", "body": "The leftmost and rightmost columns differ by one bit (wrap-around)." },
+      { "title": "Rule", "body": "K-map edges are topologically connected." },
+      { "title": "Result", "body": "Yes, they can be grouped across." }
+    ]
+  },
+  {
+    "id": "k012", "category": "kmap", "topic": "3-variable map",
+    "prompt": "In a 3-variable K-map, the columns are labeled in what order?",
+    "options": [
+      { "id": "a", "text": "00, 01, 10, 11" },
+      { "id": "b", "text": "00, 01, 11, 10" },
+      { "id": "c", "text": "11, 10, 01, 00" },
+      { "id": "d", "text": "00, 11, 01, 10" },
+      { "id": "e", "text": "10, 11, 01, 00" }
+    ],
+    "correctId": "b",
+    "formula": "Gray code order",
+    "steps": [
+      { "title": "Gray code", "body": "Adjacent cells must differ by exactly one bit." },
+      { "title": "Order", "body": "<code>00 → 01 → 11 → 10</code>." },
+      { "title": "Result", "body": "00, 01, 11, 10." }
+    ]
+  },
+  {
+    "id": "k013", "category": "kmap", "topic": "4-variable map",
+    "prompt": "In a 4-variable K-map, both axes are labeled with…",
+    "options": [
+      { "id": "a", "text": "Binary counting order 00, 01, 10, 11" },
+      { "id": "b", "text": "Gray code order 00, 01, 11, 10" },
+      { "id": "c", "text": "Hexadecimal digits" },
+      { "id": "d", "text": "Random order" },
+      { "id": "e", "text": "Only 0 and 1" }
+    ],
+    "correctId": "b",
+    "formula": "Gray code order on both axes",
+    "steps": [
+      { "title": "Rule", "body": "Both axes use Gray code so adjacent cells differ by one bit." },
+      { "title": "Order", "body": "<code>00, 01, 11, 10</code>." },
+      { "title": "Result", "body": "Gray code on both axes." }
+    ]
+  },
+  {
+    "id": "k014", "category": "kmap", "topic": "Group counting",
+    "prompt": "A K-map has 1s at cells m0, m1, m4, m5. How many groups are needed?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "3" },
+      { "id": "d", "text": "4" },
+      { "id": "e", "text": "5" }
+    ],
+    "correctId": "a",
+    "formula:": "Group as 2×2 quad",
+    "formula": "Form a 2×2 quad",
+    "steps": [
+      { "title": "Inspect", "body": "Cells m0, m1, m4, m5 form a 2×2 block." },
+      { "title": "Group", "body": "All four 1s are adjacent → one 4-cell group." },
+      { "title": "Result", "body": "1 group. Simplified SOP: <code>B'C'</code>." }
+    ]
+  },
+  {
+    "id": "k015", "category": "kmap", "topic": "SOP reading",
+    "prompt": "A K-map has 1s at m0 and m1 only. What is the minimized SOP?",
+    "options": [
+      { "id": "a", "text": "A'B'C'" },
+      { "id": "b", "text": "A'B'" },
+      { "id": "c", "text": "A' + B'" },
+      { "id": "d", "text": "B'" },
+      { "id": "e", "text": "A·B·C" }
+    ],
+    "correctId": "b",
+    "formula": "Group of 2 removes 1 variable",
+    "steps": [
+      { "title": "Locate", "body": "m0 = 000, m1 = 001. Both have A=0, B=0." },
+      { "title": "Group", "body": "They differ only in C, so C cancels." },
+      { "title": "Result", "body": "<code>A'B'</code>." }
+    ]
+  },
+  {
+    "id": "k016", "category": "kmap", "topic": "SOP reading",
+    "prompt": "A K-map has 1s at m1, m3, m5, m7 only. What is the minimized SOP?",
+    "options": [
+      { "id": "a", "text": "C" },
+      { "id": "b", "text": "A'B'C'" },
+      { "id": "c", "text": "A ⊕ C" },
+      { "id": "d", "text": "AB + C" },
+      { "id": "e", "text": "B·C" }
+    ],
+    "correctId": "a",
+    "formula": "Group of 4 removes 2 variables",
+    "steps": [
+      { "title": "Locate", "body": "m1, m3, m5, m7 all have C=1." },
+      { "title": "Group", "body": "They form a 4-cell group spanning A and B, both of which change." },
+      { "title": "Result", "body": "Only C remains constant → <code>C</code>." }
+    ]
+  },
+  {
+    "id": "k017", "category": "kmap", "topic": "SOP reading",
+    "prompt": "A K-map has 1s at m3, m7, m11, m15 only. What is the minimized SOP?",
+    "options": [
+      { "id": "a", "text": "C·D" },
+      { "id": "b", "text": "A·B" },
+      { "id": "c", "text": "A + B" },
+      { "id": "d", "text": "C + D" },
+      { "id": "e", "text": "A·B·C·D" }
+    ],
+    "correctId": "a",
+    "formula": "Group of 4 removes 2 variables",
+    "steps": [
+      { "title": "Locate", "body": "m3=0011, m7=0111, m11=1011, m15=1111 — all have C=1, D=1." },
+      { "title": "Group", "body": "A and B vary, so they cancel." },
+      { "title": "Result", "body": "<code>C·D</code>." }
+    ]
+  },
+  {
+    "id": "k018", "category": "kmap", "topic": "Variable elimination",
+    "prompt": "In a K-map group, which variables are removed from the product term?",
+    "options": [
+      { "id": "a", "text": "Variables that stay constant" },
+      { "id": "b", "text": "Variables that change within the group" },
+      { "id": "c", "text": "Only the MSB" },
+      { "id": "d", "text": "Only the LSB" },
+      { "id": "e", "text": "No variables are removed" }
+    ],
+    "correctId": "b",
+    "formula": "constant variables stay; changing ones cancel",
+    "steps": [
+      { "title": "Rule", "body": "A group covers cells where certain variables are both 0 and 1." },
+      { "title": "Consequence", "body": "Those changing variables cancel out algebraically." },
+      { "title": "Result", "body": "Keep only the constant variables." }
+    ]
+  },
+  {
+    "id": "n001", "category": "bin", "topic": "Binary to decimal",
+    "prompt": "Convert 1010₂ to decimal.",
+    "options": [
+      { "id": "a", "text": "8" },
+      { "id": "b", "text": "10" },
+      { "id": "c", "text": "12" },
+      { "id": "d", "text": "14" },
+      { "id": "e", "text": "16" }
+    ],
+    "correctId": "b",
+    "formula": "sum of set bit weights",
+    "steps": [
+      { "title": "Weights", "body": "<code>1010</code> → 8, 4, 2, 1 positions." },
+      { "title": "Sum set bits", "body": "<code>8 + 0 + 2 + 0 = 10</code>." },
+      { "title": "Result", "body": "10." }
+    ]
+  },
+  {
+    "id": "n002", "category": "bin", "topic": "Binary to decimal",
+    "prompt": "Convert 1111₂ to decimal.",
+    "options": [
+      { "id": "a", "text": "8" },
+      { "id": "b", "text": "12" },
+      { "id": "c", "text": "15" },
+      { "id": "d", "text": "16" },
+      { "id": "e", "text": "31" }
+    ],
+    "correctId": "c",
+    "formula": "sum of set bit weights",
+    "steps": [
+      { "title": "Weights", "body": "4 bits → 8, 4, 2, 1." },
+      { "title": "Sum", "body": "<code>8 + 4 + 2 + 1 = 15</code>." },
+      { "title": "Result", "body": "15." }
+    ]
+  },
+  {
+    "id": "n003", "category": "bin", "topic": "Binary to decimal",
+    "prompt": "Convert 10101₂ to decimal.",
+    "options": [
+      { "id": "a", "text": "17" },
+      { "id": "b", "text": "19" },
+      { "id": "c", "text": "21" },
+      { "id": "d", "text": "23" },
+      { "id": "e", "text": "25" }
+    ],
+    "correctId": "c",
+    "formula": "sum of set bit weights",
+    "steps": [
+      { "title": "Weights", "body": "5 bits → 16, 8, 4, 2, 1." },
+      { "title": "Sum set bits", "body": "<code>16 + 0 + 4 + 0 + 1 = 21</code>." },
+      { "title": "Result", "body": "21." }
+    ]
+  },
+  {
+    "id": "n004", "category": "bin", "topic": "Binary addition",
+    "prompt": "Compute 1101₂ + 1011₂.",
+    "options": [
+      { "id": "a", "text": "10110₂" },
+      { "id": "b", "text": "11000₂" },
+      { "id": "c", "text": "11010₂" },
+      { "id": "d", "text": "11100₂" },
+      { "id": "e", "text": "10010₂" }
+    ],
+    "correctId": "b",
+    "formula": "13 + 11 = 24",
+    "steps": [
+      { "title": "Convert", "body": "<code>1101₂ = 13</code>, <code>1011₂ = 11</code>." },
+      { "title": "Add", "body": "<code>13 + 11 = 24</code>." },
+      { "title": "Back to binary", "body": "<code>24 = 16 + 8 = 11000₂</code>." }
+    ]
+  },
+  {
+    "id": "n005", "category": "bin", "topic": "Binary addition",
+    "prompt": "Compute 1111₂ + 0001₂.",
+    "options": [
+      { "id": "a", "text": "10000₂" },
+      { "id": "b", "text": "1111₂" },
+      { "id": "c", "text": "11110₂" },
+      { "id": "d", "text": "1000₂" },
+      { "id": "e", "text": "10001₂" }
+    ],
+    "correctId": "a",
+    "formula": "15 + 1 = 16",
+    "steps": [
+      { "title": "Convert", "body": "<code>1111₂ = 15</code>, <code>0001₂ = 1</code>." },
+      { "title": "Add", "body": "<code>15 + 1 = 16</code>." },
+      { "title": "Back to binary", "body": "<code>16 = 10000₂</code> — carries out to 5 bits." }
+    ]
+  },
+  {
+    "id": "n006", "category": "bin", "topic": "Binary subtraction",
+    "prompt": "Compute 1000₂ − 0001₂.",
+    "options": [
+      { "id": "a", "text": "0111₂" },
+      { "id": "b", "text": "1001₂" },
+      { "id": "c", "text": "0110₂" },
+      { "id": "d", "text": "1111₂" },
+      { "id": "e", "text": "0000₂" }
+    ],
+    "correctId": "a",
+    "formula": "8 − 1 = 7",
+    "steps": [
+      { "title": "Convert", "body": "<code>1000₂ = 8</code>, <code>0001₂ = 1</code>." },
+      { "title": "Subtract", "body": "<code>8 − 1 = 7</code>." },
+      { "title": "Back to binary", "body": "<code>7 = 0111₂</code>." }
+    ]
+  },
+  {
+    "id": "n007", "category": "bin", "topic": "Binary multiplication",
+    "prompt": "Compute 101₂ × 10₂.",
+    "options": [
+      { "id": "a", "text": "1010₂" },
+      { "id": "b", "text": "1110₂" },
+      { "id": "c", "text": "1100₂" },
+      { "id": "d", "text": "1011₂" },
+      { "id": "e", "text": "1001₂" }
+    ],
+    "correctId": "a",
+    "formula": "5 × 2 = 10",
+    "steps": [
+      { "title": "Convert", "body": "<code>101₂ = 5</code>, <code>10₂ = 2</code>." },
+      { "title": "Multiply", "body": "<code>5 × 2 = 10</code>." },
+      { "title": "Back to binary", "body": "<code>10 = 1010₂</code>." }
+    ]
+  },
+  {
+    "id": "n008", "category": "bin", "topic": "Decimal to binary",
+    "prompt": "Convert decimal 13 to binary.",
+    "options": [
+      { "id": "a", "text": "1010" },
+      { "id": "b", "text": "1101" },
+      { "id": "c", "text": "1110" },
+      { "id": "d", "text": "1011" },
+      { "id": "e", "text": "1100" }
+    ],
+    "correctId": "b",
+    "formula": "13 = 8 + 4 + 1",
+    "steps": [
+      { "title": "Find weights", "body": "13 = 8 + 4 + 1." },
+      { "title": "Set bits", "body": "Bits 3, 2, and 0 are set → 1101." },
+      { "title": "Result", "body": "<code>1101₂</code>." }
+    ]
+  },
+  {
+    "id": "n009", "category": "bin", "topic": "Decimal to binary",
+    "prompt": "Convert decimal 25 to binary.",
+    "options": [
+      { "id": "a", "text": "11001" },
+      { "id": "b", "text": "10101" },
+      { "id": "c", "text": "11101" },
+      { "id": "d", "text": "11011" },
+      { "id": "e", "text": "10011" }
+    ],
+    "correctId": "a",
+    "formula": "25 = 16 + 8 + 1",
+    "steps": [
+      { "title": "Find weights", "body": "25 = 16 + 8 + 1." },
+      { "title": "Set bits", "body": "Bits 4, 3, and 0 → 11001." },
+      { "title": "Result", "body": "<code>11001₂</code>." }
+    ]
+  },
+  {
+    "id": "n010", "category": "bin", "topic": "Decimal to binary",
+    "prompt": "Convert decimal 100 to binary.",
+    "options": [
+      { "id": "a", "text": "1100100" },
+      { "id": "b", "text": "1100110" },
+      { "id": "c", "text": "1010100" },
+      { "id": "d", "text": "1101000" },
+      { "id": "e", "text": "1110000" }
+    ],
+    "correctId": "a",
+    "formula": "100 = 64 + 32 + 4",
+    "steps": [
+      { "title": "Find weights", "body": "100 = 64 + 32 + 4." },
+      { "title": "Set bits", "body": "Bits 6, 5, and 2 → 1100100." },
+      { "title": "Result", "body": "<code>1100100₂</code>." }
+    ]
+  },
+  {
+    "id": "n011", "category": "bin", "topic": "Binary carry",
+    "prompt": "When does a carry occur in binary addition?",
+    "options": [
+      { "id": "a", "text": "When the sum of a column is 0" },
+      { "id": "b", "text": "When the sum of a column is 2 (10₂)" },
+      { "id": "c", "text": "When both bits are 0" },
+      { "id": "d", "text": "Only in subtraction" },
+      { "id": "e", "text": "Never" }
+    ],
+    "correctId": "b",
+    "formula": "1 + 1 = 10₂ (sum 0, carry 1)",
+    "steps": [
+      { "title": "Rule", "body": "In binary, a column sum of 2 cannot be represented in one bit." },
+      { "title": "Action", "body": "Write 0 in the column and carry 1 to the next." },
+      { "title": "Result", "body": "Carry occurs when column sum ≥ 2." }
+    ]
+  },
+  {
+    "id": "n012", "category": "bin", "topic": "Bit width",
+    "prompt": "How many binary digits (bits) are needed to represent decimal 255?",
+    "options": [
+      { "id": "a", "text": "7" },
+      { "id": "b", "text": "8" },
+      { "id": "c", "text": "9" },
+      { "id": "d", "text": "10" },
+      { "id": "e", "text": "16" }
+    ],
+    "correctId": "b",
+    "formula": "2ⁿ − 1 ≥ 255 → n = 8",
+    "steps": [
+      { "title": "Bound", "body": "8 bits represent 0…255 (<code>2⁸ = 256</code> values)." },
+      { "title": "Check", "body": "255 fits exactly in 8 bits." },
+      { "title": "Result", "body": "8 bits." }
+    ]
+  },
+  {
+    "id": "n013", "category": "bin", "topic": "Hex to binary",
+    "prompt": "Hexadecimal FF in binary is…",
+    "options": [
+      { "id": "a", "text": "11111111" },
+      { "id": "b", "text": "11110000" },
+      { "id": "c", "text": "00001111" },
+      { "id": "d", "text": "10101010" },
+      { "id": "e", "text": "11001100" }
+    ],
+    "correctId": "a",
+    "formula": "each hex digit = 4 bits",
+    "steps": [
+      { "title": "Split", "body": "F = 1111, F = 1111." },
+      { "title": "Concatenate", "body": "<code>FF = 1111 1111</code>." },
+      { "title": "Result", "body": "11111111." }
+    ]
+  },
+  {
+    "id": "n014", "category": "bin", "topic": "Binary to decimal",
+    "prompt": "Convert 11111111₂ to decimal.",
+    "options": [
+      { "id": "a", "text": "127" },
+      { "id": "b", "text": "128" },
+      { "id": "c", "text": "255" },
+      { "id": "d", "text": "256" },
+      { "id": "e", "text": "512" }
+    ],
+    "correctId": "c",
+    "formula": "2⁸ − 1",
+    "steps": [
+      { "title": "All ones", "body": "8 bits all set = maximum 8-bit unsigned value." },
+      { "title": "Compute", "body": "<code>2⁸ − 1 = 255</code>." },
+      { "title": "Result", "body": "255." }
+    ]
+  },
+  {
+    "id": "n015", "category": "bin", "topic": "Binary to decimal",
+    "prompt": "Convert 10000000₂ to decimal.",
+    "options": [
+      { "id": "a", "text": "64" },
+      { "id": "b", "text": "100" },
+      { "id": "c", "text": "128" },
+      { "id": "d", "text": "256" },
+      { "id": "e", "text": "512" }
+    ],
+    "correctId": "c",
+    "formula": "2⁷ = 128",
+    "steps": [
+      { "title": "Position", "body": "Only bit 7 (MSB of 8 bits) is set." },
+      { "title": "Weight", "body": "That bit's weight is <code>2⁷ = 128</code>." },
+      { "title": "Result", "body": "128." }
+    ]
+  },
+  {
+    "id": "n016", "category": "bin", "topic": "Binary subtraction",
+    "prompt": "Compute 1010₂ − 0110₂.",
+    "options": [
+      { "id": "a", "text": "0010₂" },
+      { "id": "b", "text": "0100₂" },
+      { "id": "c", "text": "0110₂" },
+      { "id": "d", "text": "0000₂" },
+      { "id": "e", "text": "1000₂" }
+    ],
+    "correctId": "b",
+    "formula": "10 − 6 = 4",
+    "steps": [
+      { "title": "Convert", "body": "<code>1010₂ = 10</code>, <code>0110₂ = 6</code>." },
+      { "title": "Subtract", "body": "<code>10 − 6 = 4</code>." },
+      { "title": "Back to binary", "body": "<code>4 = 0100₂</code>." }
+    ]
+  },
+  {
+    "id": "s001", "category": "signed", "topic": "Two's complement",
+    "prompt": "What is −25 in 8-bit two's complement?",
+    "options": [
+      { "id": "a", "text": "11100110" },
+      { "id": "b", "text": "11100111" },
+      { "id": "c", "text": "10011001" },
+      { "id": "d", "text": "11100101" },
+      { "id": "e", "text": "10011000" }
+    ],
+    "correctId": "b",
+    "formula": "−n = (~n) + 1",
+    "steps": [
+      { "title": "Write +25", "body": "<code>25 = 00011001₂</code>." },
+      { "title": "One's complement", "body": "Invert: <code>11100110</code>." },
+      { "title": "Add 1", "body": "<code>11100110 + 1 = 11100111</code>. That is −25." }
+    ]
+  },
+  {
+    "id": "s002", "category": "signed", "topic": "Two's complement",
+    "prompt": "What is +50 in 8-bit two's complement?",
+    "options": [
+      { "id": "a", "text": "00110010" },
+      { "id": "b", "text": "00110011" },
+      { "id": "c", "text": "10110010" },
+      { "id": "d", "text": "00110100" },
+      { "id": "e", "text": "11001101" }
+    ],
+    "correctId": "a",
+    "formula": "positive → same as unsigned",
+    "steps": [
+      { "title": "MSB", "body": "Positive numbers have MSB = 0." },
+      { "title": "Encode magnitude", "body": "<code>50 = 32 + 16 + 2 = 00110010</code>." },
+      { "title": "Result", "body": "00110010." }
+    ]
+  },
+  {
+    "id": "s003", "category": "signed", "topic": "Two's complement",
+    "prompt": "Interpret 11100111 as an 8-bit two's complement signed number.",
+    "options": [
+      { "id": "a", "text": "−25" },
+      { "id": "b", "text": "−24" },
+      { "id": "c", "text": "231" },
+      { "id": "d", "text": "−23" },
+      { "id": "e", "text": "−26" }
+    ],
+    "correctId": "a",
+    "formula": "if MSB=1, value = raw − 256",
+    "steps": [
+      { "title": "MSB", "body": "MSB = 1, so the number is negative." },
+      { "title": "Invert + 1", "body": "Invert to get 00011000, then +1 → 00011001 = 25." },
+      { "title": "Result", "body": "−25." }
+    ]
+  },
+  {
+    "id": "s004", "category": "signed", "topic": "One's complement",
+    "prompt": "What is the one's complement of 10110010?",
+    "options": [
+      { "id": "a", "text": "01001101" },
+      { "id": "b", "text": "01001110" },
+      { "id": "c", "text": "10110011" },
+      { "id": "d", "text": "11001101" },
+      { "id": "e", "text": "00110010" }
+    ],
+    "correctId": "a",
+    "formula": "one's complement = invert every bit",
+    "steps": [
+      { "title": "Rule", "body": "Flip each bit: 0→1 and 1→0." },
+      { "title": "Apply", "body": "<code>10110010 → 01001101</code>." },
+      { "title": "Result", "body": "01001101." }
+    ]
+  },
+  {
+    "id": "s005", "category": "signed", "topic": "Two's complement",
+    "prompt": "What is the two's complement of 10110010?",
+    "options": [
+      { "id": "a", "text": "01001101" },
+      { "id": "b", "text": "01001110" },
+      { "id": "c", "text": "10110011" },
+      { "id": "d", "text": "11001101" },
+      { "id": "e", "text": "01001100" }
+    ],
+    "correctId": "b",
+    "formula": "two's complement = invert + 1",
+    "steps": [
+      { "title": "Invert", "body": "<code>10110010 → 01001101</code>." },
+      { "title": "Add 1", "body": "<code>01001101 + 1 = 01001110</code>." },
+      { "title": "Result", "body": "01001110." }
+    ]
+  },
+  {
+    "id": "s006", "category": "signed", "topic": "Range",
+    "prompt": "What is the range of an 8-bit two's complement signed integer?",
+    "options": [
+      { "id": "a", "text": "0 to 255" },
+      { "id": "b", "text": "−127 to +127" },
+      { "id": "c", "text": "−128 to +127" },
+      { "id": "d", "text": "−128 to +128" },
+      { "id": "e", "text": "−255 to +255" }
+    ],
+    "correctId": "c",
+    "formula": "[−2ⁿ⁻¹, 2ⁿ⁻¹ − 1]",
+    "steps": [
+      { "title": "Formula", "body": "For n bits: <code>−2ⁿ⁻¹</code> to <code>2ⁿ⁻¹ − 1</code>." },
+      { "title": "Substitute", "body": "n = 8: <code>−128 to +127</code>." },
+      { "title": "Result", "body": "−128 to +127." }
+    ]
+  },
+  {
+    "id": "s007", "category": "signed", "topic": "Range",
+    "prompt": "What is the range of an 8-bit unsigned integer?",
+    "options": [
+      { "id": "a", "text": "0 to 127" },
+      { "id": "b", "text": "0 to 128" },
+      { "id": "c", "text": "0 to 255" },
+      { "id": "d", "text": "1 to 256" },
+      { "id": "e", "text": "−128 to +127" }
+    ],
+    "correctId": "c",
+    "formula": "[0, 2ⁿ − 1]",
+    "steps": [
+      { "title": "Formula", "body": "n-bit unsigned: <code>0</code> to <code>2ⁿ − 1</code>." },
+      { "title": "Substitute", "body": "n = 8: <code>0 to 255</code>." },
+      { "title": "Result", "body": "0 to 255." }
+    ]
+  },
+  {
+    "id": "s008", "category": "signed", "topic": "Sign bit",
+    "prompt": "In 8-bit two's complement, an MSB of 1 means…",
+    "options": [
+      { "id": "a", "text": "The number is positive" },
+      { "id": "b", "text": "The number is negative" },
+      { "id": "c", "text": "The number is zero" },
+      { "id": "d", "text": "The number is undefined" },
+      { "id": "e", "text": "The number overflowed" }
+    ],
+    "correctId": "b",
+    "formula": "MSB is the sign bit",
+    "steps": [
+      { "title": "Sign bit rule", "body": "In two's complement, the leftmost bit represents the sign." },
+      { "title": "MSB = 1", "body": "Means the number is negative." },
+      { "title": "Result", "body": "Negative." }
+    ]
+  },
+  {
+    "id": "s009", "category": "signed", "topic": "Two's complement",
+    "prompt": "What is −5 in 8-bit two's complement?",
+    "options": [
+      { "id": "a", "text": "11111010" },
+      { "id": "b", "text": "11111011" },
+      { "id": "c", "text": "10000101" },
+      { "id": "d", "text": "11111001" },
+      { "id": "e", "text": "10000100" }
+    ],
+    "correctId": "b",
+    "formula": "−n = (~n) + 1",
+    "steps": [
+      { "title": "Write +5", "body": "<code>5 = 00000101₂</code>." },
+      { "title": "Invert", "body": "One's complement: <code>11111010</code>." },
+      { "title": "Add 1", "body": "<code>11111010 + 1 = 11111011</code>." }
+    ]
+  },
+  {
+    "id": "s010", "category": "signed", "topic": "Two's complement",
+    "prompt": "Interpret 11010110 as an 8-bit two's complement signed number.",
+    "options": [
+      { "id": "a", "text": "−42" },
+      { "id": "b", "text": "−43" },
+      { "id": "c", "text": "214" },
+      { "id": "d", "text": "−41" },
+      { "id": "e", "text": "−40" }
+    ],
+    "correctId": "a",
+    "formula": "if MSB=1, value = raw − 256",
+    "steps": [
+      { "title": "MSB", "body": "MSB = 1, negative number." },
+      { "title": "Magnitude", "body": "Invert + 1: <code>00101001 + 1 = 00101010 = 42</code>." },
+      { "title": "Result", "body": "−42." }
+    ]
+  },
+  {
+    "id": "s011", "category": "signed", "topic": "Two's complement",
+    "prompt": "Why is two's complement preferred over one's complement?",
+    "options": [
+      { "id": "a", "text": "It uses less memory" },
+      { "id": "b", "text": "It has only one representation of zero and simpler arithmetic" },
+      { "id": "c", "text": "It allows larger numbers" },
+      { "id": "d", "text": "It avoids the sign bit" },
+      { "id": "e", "text": "It is faster to type" }
+    ],
+    "correctId": "b",
+    "formula": "two's complement: single zero, unified addition/subtraction",
+    "steps": [
+      { "title": "One's complement problem", "body": "It has two zeros (+0 and −0) and needs end-around carry." },
+      { "title": "Two's complement fix", "body": "Only one zero, and subtraction is just addition of the negation." },
+      { "title": "Result", "body": "Simpler hardware, one zero." }
+    ]
+  },
+  {
+    "id": "s012", "category": "signed", "topic": "Two's complement",
+    "prompt": "What is 0 in 8-bit two's complement?",
+    "options": [
+      { "id": "a", "text": "00000000" },
+      { "id": "b", "text": "11111111" },
+      { "id": "c", "text": "10000000" },
+      { "id": "d", "text": "01111111" },
+      { "id": "e", "text": "00000001" }
+    ],
+    "correctId": "a",
+    "formula": "0 → all zeros",
+    "steps": [
+      { "title": "Rule", "body": "Zero has a single representation in two's complement." },
+      { "title": "Encode", "body": "All bits are 0." },
+      { "title": "Result", "body": "00000000." }
+    ]
+  },
+  {
+    "id": "s013", "category": "signed", "topic": "Overflow",
+    "prompt": "Signed overflow in two's complement addition occurs when…",
+    "options": [
+      { "id": "a", "text": "Two positive numbers produce a negative result" },
+      { "id": "b", "text": "Two negatives produce a negative result" },
+      { "id": "c", "text": "The result is zero" },
+      { "id": "d", "text": "The carry-out is 1" },
+      { "id": "e", "text": "Both inputs are 0" }
+    ],
+    "correctId": "a",
+    "formula": "same-sign inputs, opposite-sign output → overflow",
+    "steps": [
+      { "title": "Rule", "body": "Overflow means the true result does not fit in the bit width." },
+      { "title": "Signs", "body": "If both operands have the same sign but the result has the opposite sign, overflow has occurred." },
+      { "title": "Example", "body": "127 + 1 = 10000000 = −128 (overflow)." }
+    ]
+  },
+  {
+    "id": "s014", "category": "signed", "topic": "Two's complement",
+    "prompt": "Interpret 10000000 as an 8-bit two's complement signed number.",
+    "options": [
+      { "id": "a", "text": "−128" },
+      { "id": "b", "text": "−127" },
+      { "id": "c", "text": "128" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "−0" }
+    ],
+    "correctId": "a",
+    "formula": "−2ⁿ⁻¹ = most negative value",
+    "steps": [
+      { "title": "MSB = 1", "body": "Negative." },
+      { "title": "Special value", "body": "10000000 is the most negative two's complement value." },
+      { "title": "Result", "body": "−128." }
+    ]
+  },
+  {
+    "id": "s015", "category": "signed", "topic": "One's complement",
+    "prompt": "What is the one's complement of 00000000?",
+    "options": [
+      { "id": "a", "text": "00000000" },
+      { "id": "b", "text": "11111111" },
+      { "id": "c", "text": "10000000" },
+      { "id": "d", "text": "01111111" },
+      { "id": "e", "text": "00000001" }
+    ],
+    "correctId": "b",
+    "formula": "invert every bit",
+    "steps": [
+      { "title": "Rule", "body": "One's complement inverts each bit." },
+      { "title": "Apply", "body": "<code>00000000 → 11111111</code>." },
+      { "title": "Note", "body": "11111111 in one's complement represents −0." }
+    ]
+  },
+  {
+    "id": "s016", "category": "signed", "topic": "Two's complement",
+    "prompt": "What is the two's complement of 0?",
+    "options": [
+      { "id": "a", "text": "00000000" },
+      { "id": "b", "text": "11111111" },
+      { "id": "c", "text": "10000000" },
+      { "id": "d", "text": "01111111" },
+      { "id": "e", "text": "00000001" }
+    ],
+    "correctId": "a",
+    "formula": "(~0) + 1 = 0",
+    "steps": [
+      { "title": "Invert 0", "body": "<code>00000000 → 11111111</code>." },
+      { "title": "Add 1", "body": "<code>11111111 + 1 = 100000000</code>, keep 8 bits → <code>00000000</code>." },
+      { "title": "Result", "body": "0 — two's complement of zero is zero." }
+    ]
+  }
+]
